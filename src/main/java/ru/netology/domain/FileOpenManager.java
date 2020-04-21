@@ -1,16 +1,11 @@
 package ru.netology.domain;
 
-import ru.netology.comparator.AppComparator;
+import ru.netology.comparator.CompareByAlphabet;
 
-import java.lang.reflect.Array;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class FileOpenManager {
-    Map<String, String> map = new HashMap<>();
-
-    public FileOpenManager() {
-    }
+    private Map<String, String> map = new HashMap<>();
 
     public String remove(String key) {
         return map.remove(key.toLowerCase());
@@ -20,7 +15,7 @@ public class FileOpenManager {
         map.putIfAbsent(key.toLowerCase(), app);
     }
 
-    public String name(String key) {
+    public String getName(String key) {
         return map.get(key.toLowerCase());
     }
 
@@ -32,8 +27,8 @@ public class FileOpenManager {
     public List<String> showAllTypes() {
         Set<String> strings = map.keySet();
         List<String> list = new ArrayList<>(strings);
-        AppComparator comparator = new AppComparator();
-        list.sort(comparator);
+        CompareByAlphabet compareByAlphabet = new CompareByAlphabet();
+        list.sort(compareByAlphabet);
         return list;
     }
 

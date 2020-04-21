@@ -10,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 public class FileOpenManagerTest {
 
-    FileOpenManager fileOpenManager = new FileOpenManager();
+    private FileOpenManager fileOpenManager = new FileOpenManager();
 
     private String photoshop = "Adobe Photoshop";
     private String browser = "Google Chrome";
@@ -50,20 +50,20 @@ public class FileOpenManagerTest {
     @Test
     void shouldShowNameByType() {
         String expected = "Image Tool";
-        String actual = fileOpenManager.name(".jpg");
+        String actual = fileOpenManager.getName(".jpg");
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldShowNameByTypeIfUsedUppercase() {
         String expected = "Image Tool";
-        String actual = fileOpenManager.name(".PNG");
+        String actual = fileOpenManager.getName(".PNG");
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldShowNameByTypeIfUsedNoExistType() {
-        String actual = fileOpenManager.name(".jpeg");
+        String actual = fileOpenManager.getName(".jpeg");
         assertNull(actual);
     }
 
